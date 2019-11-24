@@ -145,13 +145,29 @@ end
 
 local function do_fork()
 	local session = get_session();
-	local socket = session.conn.socket();
+	local conn = session.conn;
+
+	local socket;
+	local server_event = false;
+
+	if conn.conn then -- server_event
+		socket = conn.conn;
+		server_event = true;
+	elseif conn.socket then -- server_select
+		socket = conn.socket();
+	else
+		error("can't find socket");
+	end
+
 	local fd = socket:getfd();
 
 	local child = assert(lforkshell.fork());
 	if child ~= 0 then
 		-- parent process
-		lforkshell.closefd(fd);
+		if not server_event then
+			-- server_event really does not like this, but server_select needs it
+			lforkshell.closefd(fd);
+		end
 		session.disconnect();
 	else
 		-- child process
