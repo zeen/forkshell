@@ -16,3 +16,10 @@ Fork a running Prosody, giving you a Lua REPL to modify and inspect a Prosody in
 The telnet console will now be connected to a forked Prosody, fully independent from the original Prosody. All file descriptors would be closed. stdin, stderr and loggingmanager would be connected to the telnet console.
 
 Also includes quality of life pretty-printing of table fields and function upvalues.
+
+## Compatibility
+
+* Targetting Linux
+* Targetting Lua 5.2
+* Tested with Prosody 0.11, should work with trunk, likely won't work with older versions
+* Tested with server_select, server_event and server_epoll
