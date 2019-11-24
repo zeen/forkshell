@@ -1,6 +1,6 @@
 # forkshell
 
-Fork a running Prosody, giving you a shell to modify and inspect a Prosody instance without impacting the original.
+Fork a running Prosody, giving you a Lua REPL to modify and inspect a Prosody instance without impacting the original.
 
 ## Usage
 
@@ -14,3 +14,5 @@ Fork a running Prosody, giving you a shell to modify and inspect a Prosody insta
 ```
 
 The telnet console will now be connected to a forked Prosody, fully independent from the original Prosody. All file descriptors would be closed. stdin, stderr and loggingmanager would be connected to the telnet console.
+
+Also includes quality of life pretty-printing of table fields and function upvalues.
