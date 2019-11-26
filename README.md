@@ -1,6 +1,8 @@
 # forkshell
 
-Fork a running Prosody, giving you a Lua REPL to modify and inspect a Prosody instance without impacting the original.
+Sometimes you need to debug applications in production, and it's helpful to have a REPL available. But this requires care, and you need to stay away from destructive operations.
+
+forkshell is a tool made for [Prosody](https://prosody.im), that gives you a Lua REPL in a forked process, so you can modify and inspect without impacting the original process.
 
 ## Usage
 
@@ -19,7 +21,8 @@ Also includes quality of life pretty-printing of table fields and function upval
 
 ## Compatibility
 
-* Targetting Linux
-* Targetting Lua 5.2
+* Targeting Linux
+* Targeting Lua 5.2
 * Tested with Prosody 0.11, should work with trunk, likely won't work with older versions
-* Tested with server_select, server_event and server_epoll
+* Tested with server_select, server_event and server_epoll networking backends for Prosody
+* Tested with Ubuntu 18.04
