@@ -2,7 +2,7 @@
 
 Sometimes you need to debug applications in production, and it's helpful to have a REPL available. But this requires care, and you need to stay away from destructive operations.
 
-forkshell is a tool made for [Prosody](https://prosody.im), that gives you a Lua REPL in a forked process, so you can modify and inspect without impacting the original process.
+forkshell is a tool made for [Prosody](https://prosody.im) that gives you a Lua REPL in a forked process, so you can modify and inspect without impacting the original process.
 
 ## Usage
 
