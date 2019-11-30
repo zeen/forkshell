@@ -122,6 +122,16 @@ local function do_child(fd, socket)
 	logger.reset();
 	logger.add_simple_sink(function(name, level, message) print(("[%s] %s: %s"):format(level, name, message)); end);
 
+	-- paint oomkiller target on our process
+	local oom_score_adj, err = io.open("/proc/self/oom_score_adj", "w");
+	if oom_score_adj then
+		local OOM_SCORE_ADJ_MAX = "1000";
+		oom_score_adj:write(OOM_SCORE_ADJ_MAX);
+		oom_score_adj:close();
+	else
+		print("[warn] unable to set oom_score_adj in forked process: "..tostring(err));
+	end
+
 	print("\n>>> Forked Prosody Shell <<<");
 
 	-- local runner = coroutine.wrap(function()
