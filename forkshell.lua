@@ -13,13 +13,13 @@ local function get_session()
 		local info = debug.getinfo(i);
 		if not info then return nil; end
 
-		if info.name == "process_line" and info.source:match("mod_admin_telnet%.lua$") then
+		if info.name == nil and info.source:match("events%.lua$") then
 			for j=1,100 do
 				local key, val = debug.getlocal(i, j);
 				if not key then return nil; end
 
-				if key == "session" then
-					return val;
+				if key == "event_data" then
+					return val.origin;
 				end
 			end
 		end
